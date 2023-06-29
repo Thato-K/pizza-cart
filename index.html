@@ -77,36 +77,40 @@
 }">
     <h1>Perfect Pizza</h1>
 
-    <section class="cart">
+    <section>
+        <section class="cart">
         <h2>Shopping cart</h2>
         <div style="display: flex; align-items: center;" >
 
-        <h4>Large Pizza</h>    
+        <h5>Large Pizza</h>    
         <button @click="addLargePizza()">+</button>
+        <span x-text="largeCount" style="margin-right: 10px;"></span>
         <button @click="subtractLargePizza()">-</button>
         <span x-text="'R' + (largePrice * cart.large)" style="margin-right: 10px;">R90</span>
-
         </div>
     
         <div>
-          <h4>Medium Pizza</h>
+          <h5>Medium Pizza</h>
           <button @click="addMediumPizza()">+</button>
+          <span x-text="mediumCount" style="margin-right: 10px;"></span>
           <button @click="subtractMediumPizza()">-</button>
           <span x-text="'R' + (mediumPrice * cart.medium)" style="margin-right: 10px;">R60</span>
         </div> 
     
         <div>
-          <h4>Small Pizza</h>
+          <h5>Small Pizza</h>
           <button @click="addSmallPizza()">+</button>
+          <span x-text="smallCount" style="margin-right: 10px;"></span>
           <button @click="subtractSmallPizza()">-</button>
           <span x-text="'R' + (smallPrice * cart.small)" style="margin-right: 10px;">R35</span>
         </div>
 
         <div style="display: flex; align-items: center;">
-            <h4>Total cost:</h5>
+            <h4>Total cost:</h4>
             <span x-text=" 'R' + (totalCost = (largePrice * cart.large) + (mediumPrice * cart.medium) + (smallPrice * cart.small))"></span>
         </div>
         <hr>
+
         <template x-if=" totalCost > 0 ">
             <div x-show="true">
                 <button @click="modal = true">Check out</button>
@@ -118,16 +122,14 @@
             <h5>Payment amount:</h5>
             <input type="text" x-model="paymentAmount" class="theInputValue" style="margin: 0;">
             <button @click="if(paymentAmount >= totalCost){
-                message='Enjoy your pizzas';
+                message='Enjoy your pizzas!';
             }else{
                 message = 'Sorry - that is not enough money!'
             }
             ">Comfirm the amount</button>
         </div>
-    <br>
-
-
-    </section>
+        <br>  
+        </section>
 
 <section class="pizza">
     <div class="large_pizza">
@@ -148,7 +150,7 @@
           <p>Medium margeritha pizza with 3 toppings max.</p>
           <p>2 or less meat toppings.</p>
           <p>3 or less other toppings.</p>
-          <button @click="cart.medium++">Add to cart</button>
+          <button @click="addMediumPizza()">Add to cart</button>
     </div> 
 
     <div class="small_pizza">
@@ -158,8 +160,10 @@
         <p>Small pizza with 3 toppings.</p>
         <p>1 meat topping.</p>
         <p>3 or less other toppings.</p>
-        <button @click="cart.small++">Add to cart</button>
+        <button @click="addSmallPizza()">Add to cart</button>
     </div>
+</section>
+
 </section>
 
     <div class="contact">
@@ -169,7 +173,9 @@
        <p>/fb</p>
        <p>/insta</p>
        <p>@perfectpizza</p>
+       <br>
     </div>
+    <br>
     
 </body>
 </html>
