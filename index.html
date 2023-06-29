@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>src="index.js"</script>
+    
 </head>
 
 <body x-data="{
@@ -78,15 +79,16 @@
     <h1>Perfect Pizza</h1>
 
     <section>
-        <section class="cart">
-        <h2>Shopping cart</h2>
-        <div style="display: flex; align-items: center;" >
-
+        <section class="cart">   
+        <div style="text-align: center; margin: 0.5em; border-radius: 0.2em; padding: 1em; flex: 1;">
+        <h2 style="text-align: center; margin: 0.5em; border-radius: 0.2em; padding: 1em; flex: 1;">Shopping cart</h2>
+        
+        <div style="text-align: center; margin: 0.5em; border-radius: 0.2em; padding: 0.5 em; flex: 1;" >
         <h5>Large Pizza</h>    
         <button @click="addLargePizza()">+</button>
         <span x-text="largeCount" style="margin-right: 10px;"></span>
         <button @click="subtractLargePizza()">-</button>
-        <span x-text="'R' + (largePrice * cart.large)" style="margin-right: 10px;">R90</span>
+        <span x-text="'R' + (largePrice * cart.large)" style="text-align: center; margin: 0.5em; border-radius: 0.2em; padding: 1em; flex: 1;">R90</span>
         </div>
     
         <div>
@@ -105,7 +107,7 @@
           <span x-text="'R' + (smallPrice * cart.small)" style="margin-right: 10px;">R35</span>
         </div>
 
-        <div style="display: flex; align-items: center;">
+        <div style="text-align: center; margin: 0.5em; border-radius: 0.2em; padding: 1em; flex: 1;">
             <h4>Total cost:</h4>
             <span x-text=" 'R' + (totalCost = (largePrice * cart.large) + (mediumPrice * cart.medium) + (smallPrice * cart.small))"></span>
         </div>
@@ -117,10 +119,10 @@
             </div>
         </template>
         
-        <div x-show="modal" @click.outside="modal = false" style="display: flex; align-items: center;">
+        <div class= 'message' x-show="modal" @click.outside="modal = false" style="display: flex; align-items: center;">
             <div x-text="message"></div>
-            <h5>Payment amount:</h5>
-            <input type="text" x-model="paymentAmount" class="theInputValue" style="margin: 0;">
+            <h5 style="color: black; margin-right: 10px;">Payment amount</h5>
+            <input type="text" x-model="paymentAmount" class="theInputValue">
             <button @click="if(paymentAmount >= totalCost){
                 message='Enjoy your pizzas!';
             }else{
@@ -128,6 +130,7 @@
             }
             ">Comfirm the amount</button>
         </div>
+        
         <br>  
         </section>
 
@@ -141,7 +144,6 @@
          <p> 3 or less other toppings.</p>
         <button @click="addLargePizza()">Add to cart</button>
     </div>
-
 
     <div class="medium_pizza">
         <h2>Medium Pizza</h2>
